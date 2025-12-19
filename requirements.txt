@@ -1,0 +1,7 @@
+pytest
+pylint
+python-dotenv
+boto3
+pandas
+psycopg2
+ipykernel

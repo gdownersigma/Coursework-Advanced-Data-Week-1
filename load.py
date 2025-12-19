@@ -187,8 +187,8 @@ def load_data_to_db(data_creds: dict, logger=None) -> None:  # Add logger parame
         conn = get_db_connection(data_creds)
         cursor = conn.cursor()
 
-        execute_schema(cursor, logger)
-        conn.commit()
+        # execute_schema(cursor, logger) ONLY FOR ONE TIME SETUP
+        # conn.commit()
 
         create_staging_tables(cursor, logger)
 
@@ -207,7 +207,7 @@ def load_data_to_db(data_creds: dict, logger=None) -> None:  # Add logger parame
         conn.close()
 
         if logger:
-            logger.info('Schema executed and connection closed')
+            logger.info('Database updated,  connection closed')
     except Exception as e:
         if logger:
             logger.error(f'Error loading data to DB: {e}')

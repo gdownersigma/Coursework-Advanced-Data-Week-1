@@ -90,7 +90,6 @@ def parse_arguments():
         '--db-port', type=str, default=ENV.get('DB_PORT', '5432'),
         help='Database port (default: 5432)'
     )
-
     return parser.parse_args()
 
 
@@ -129,6 +128,7 @@ def transform_data(logger: logging.Logger) -> None:
     transform_json_data(logger)
     # Transform CSV files
     transform_csv_data(logger)
+
 
     # Call it early in your main script
 if __name__ == '__main__':

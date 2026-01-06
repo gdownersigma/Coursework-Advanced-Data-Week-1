@@ -98,13 +98,14 @@ def run_kafka_consumer(db_connection, logger):
                 logger.error(f"Kafka error: {msg.error()}")
                 continue
 
-            logger.debug(f"Received message: {msg.value().decode('utf-8')}")
+            logger.info(f"Received message: {msg.value().decode('utf-8')}")
             data = json.loads(msg.value().decode("utf-8"))
 
             if validate_message(data):
                 cleaned_data = clean_message(data)
-                logger.info(f"Cleaned data: {cleaned_data}")
+                logger.info(f"Cleaned Data... inserting data...")
                 insert_kiosk_data(db_connection, cleaned_data, logger)
+                logger.info(f"Data inserted successfully.")
             else:
                 logger.warning(f"Invalid message skipped: {data}")
 

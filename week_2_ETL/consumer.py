@@ -17,7 +17,7 @@ logging.basicConfig(
 )
 
 
-def validate_message(data) -> bool:
+def validate_message(data: dict) -> bool:
     """Returns True if message is valid and should be processed."""
 
     # Must have val & site
@@ -44,7 +44,7 @@ def validate_message(data) -> bool:
     return True
 
 
-def clean_message(data):
+def clean_message(data: dict):
     """Returns a cleaned version of the message."""
     data_to_send = {
         "at": data["at"],
